@@ -1,0 +1,12 @@
+apiVersion: tardelli.com.au/v1alpha1
+kind: AutoMapperDefinition
+metadata:
+  labels:
+    app.kubernetes.io/name: automapperdefinition
+    app.kubernetes.io/instance: automapperdefinition-sample
+    app.kubernetes.io/part-of: lazy
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: lazy
+  name: automapperdefinition-sample
+spec:
+  # TODO(user): Add fields here

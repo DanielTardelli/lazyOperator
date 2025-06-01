@@ -1,0 +1,247 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+  name: automapperdefinitions.tardelli.com.au
+spec:
+  group: tardelli.com.au
+  names:
+    kind: AutoMapperDefinition
+    listKind: AutoMapperDefinitionList
+    plural: automapperdefinitions
+    singular: automapperdefinition
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AutoMapperDefinition is the Schema for the automapperdefinitions
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AutoMapperDefinitionSpec defines the desired state of AutoMapperDefinition
+            properties:
+              autoMapperObjects:
+                description: 'Maps: List of maps of relationships between resources
+                  and their config'
+                items:
+                  description: 'DT: AutoMapperObject defines a singular relationship
+                    between two resources'
+                  properties:
+                    basis:
+                      enum:
+                      - cluster
+                      - label
+                      - namespace
+                      type: string
+                    labelBasis:
+                      items:
+                        type: string
+                      type: array
+                    namespaceBasis:
+                      items:
+                        type: string
+                      type: array
+                    result:
+                      description: 'DT: Required to define the various resources we''ll
+                        be referring to so we don''t get tightly coupled versioning
+                        dependencies'
+                      properties:
+                        group:
+                          type: string
+                        kind:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    source:
+                      description: 'Source:          Resource type that is being watched
+                        Result:          Resource type that is provisioned as a result
+                        Basis:           Relationship basis, by label, namespace or
+                        cluster-wide LabelBasis:     Array of labels to watch NamespaceBasis:
+                        Array of namespaces to watch DeclaredVars:    Values in resulting
+                        resource declared statically VarMap:          Values in resulting
+                        resource dependent on source (both static and dynamic)'
+                      properties:
+                        group:
+                          type: string
+                        kind:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    varMap:
+                      items:
+                        description: 'DT : just maps a source attribute to a dest
+                          attribute, interpreted based on how it is invoked whether
+                          declared or referenced'
+                        properties:
+                          destinationVar:
+                            type: string
+                          sourceVar:
+                            type: string
+                          type:
+                            enum:
+                            - static
+                            - referenced
+                            type: string
+                        required:
+                        - destinationVar
+                        - sourceVar
+                        - type
+                        type: object
+                      type: array
+                  required:
+                  - basis
+                  - labelBasis
+                  - namespaceBasis
+                  - result
+                  - source
+                  type: object
+                type: array
+            required:
+            - autoMapperObjects
+            type: object
+          status:
+            description: AutoMapperDefinitionStatus defines the observed state of
+              AutoMapperDefinition
+            properties:
+              mapped:
+                additionalProperties:
+                  description: 'DT: AutoMapperDefinitionStatusMapped is to keep a
+                    list of all relationships defined by user'
+                  properties:
+                    basis:
+                      type: string
+                    basisVars:
+                      items:
+                        type: string
+                      type: array
+                    created:
+                      type: boolean
+                    resources:
+                      additionalProperties:
+                        description: 'DT: AutoMapperDefinitionStatusResource is just
+                          the name and namespace of the resource to keep track of
+                          it like an inventory'
+                        properties:
+                          gvk:
+                            description: 'DT: Required to define the various resources
+                              we''ll be referring to so we don''t get tightly coupled
+                              versioning dependencies'
+                            properties:
+                              group:
+                                type: string
+                              kind:
+                                type: string
+                              version:
+                                type: string
+                            required:
+                            - group
+                            - kind
+                            - version
+                            type: object
+                          name:
+                            type: string
+                          namespace:
+                            type: string
+                        required:
+                        - gvk
+                        - name
+                        - namespace
+                        type: object
+                      type: object
+                    result:
+                      description: 'DT: Required to define the various resources we''ll
+                        be referring to so we don''t get tightly coupled versioning
+                        dependencies'
+                      properties:
+                        group:
+                          type: string
+                        kind:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    source:
+                      description: 'Source:    What resource is the controller looking
+                        for Result:    What resource is provisioned as a result Basis:     Is
+                        it based on namespace, cluster-wide, label? BasisVars: Associated
+                        variables with the basis Created:   Whether the relationship
+                        and resultant resources have been created Resources: The provisioned
+                        resources as a result of this relationship'
+                      properties:
+                        group:
+                          type: string
+                        kind:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    varMap:
+                      description: 'DT : just maps a source attribute to a dest attribute,
+                        interpreted based on how it is invoked whether declared or
+                        referenced'
+                      properties:
+                        destinationVar:
+                          type: string
+                        sourceVar:
+                          type: string
+                        type:
+                          enum:
+                          - static
+                          - referenced
+                          type: string
+                      required:
+                      - destinationVar
+                      - sourceVar
+                      - type
+                      type: object
+                  required:
+                  - basis
+                  - basisVars
+                  - created
+                  - result
+                  - source
+                  - varMap
+                  type: object
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
