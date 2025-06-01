@@ -1,0 +1,14 @@
+{
+    "name": "K8s Operator Dev",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+      "ms-vscode.go",
+      "ms-kubernetes-tools.vscode-kubernetes-tools"
+    ],
+    "postCreateCommand": "go version && operator-sdk version && kubectl version --client"
+  }
