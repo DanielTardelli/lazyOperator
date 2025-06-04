@@ -1,0 +1,181 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+  name: automapperrelationships.tardelli.com.au
+spec:
+  group: tardelli.com.au
+  names:
+    kind: AutoMapperRelationship
+    listKind: AutoMapperRelationshipList
+    plural: automapperrelationships
+    singular: automapperrelationship
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AutoMapperRelationship is the Schema for the automapperrelationships
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AutoMapperRelationshipSpec defines the desired state of AutoMapperRelationship
+            properties:
+              basis:
+                description: ENUM['cluster', 'label', 'namespace'] - Defines the basis
+                  of the relationship, its either cluster wide, based on resource
+                  labels or based on resource namespaces.
+                type: string
+              labels:
+                additionalProperties:
+                  type: string
+                description: If the basis is equal to label, this map will have the
+                  key value pairs of all labels that are to be watched for this relationship
+                type: object
+              namespaces:
+                description: If the basis is equal to namespace, this slice will contain
+                  the namespaces that are to be watched for this relationship
+                items:
+                  type: string
+                type: array
+              result:
+                description: The GVK of the result resource that will determine what
+                  resource will be provisioned in response to a source resource dependent
+                  on the basis of the relationship
+                properties:
+                  group:
+                    description: The group metadata value for the resource as specified
+                      in the CRD
+                    type: string
+                  kind:
+                    description: The kind metadata value (AKA the name) for the resource
+                      as specified in the CRD
+                    type: string
+                  version:
+                    description: The version metadata value for the resource as specified
+                      in the CRD
+                    type: string
+                required:
+                - group
+                - kind
+                - version
+                type: object
+              source:
+                description: The GVK of the source resource which will be watched
+                  by the controller to decide how to administer the result resources
+                properties:
+                  group:
+                    description: The group metadata value for the resource as specified
+                      in the CRD
+                    type: string
+                  kind:
+                    description: The kind metadata value (AKA the name) for the resource
+                      as specified in the CRD
+                    type: string
+                  version:
+                    description: The version metadata value for the resource as specified
+                      in the CRD
+                    type: string
+                required:
+                - group
+                - kind
+                - version
+                type: object
+              varMap:
+                description: The mappings of variables to the result resources both
+                  static and dynamic/referenced
+                items:
+                  description: 'DT : just maps a source attribute to a dest attribute,
+                    interpreted based on how it is invoked whether declared or referenced'
+                  properties:
+                    destinationVar:
+                      description: The JSON path where the value will be deposited
+                        in the resultant resource
+                      type: string
+                    sourceVar:
+                      description: Either the static value or JSON path to the attribute
+                        in accordance to the above
+                      type: string
+                    type:
+                      description: ENUM['static', 'referenced'] - Defines whether
+                        the variable will be defined by the user or will reference
+                        a resource attribute from the source
+                      type: string
+                  required:
+                  - destinationVar
+                  - sourceVar
+                  - type
+                  type: object
+                type: array
+            required:
+            - basis
+            - labels
+            - namespaces
+            - result
+            - source
+            - varMap
+            type: object
+          status:
+            description: AutoMapperRelationshipStatus defines the observed state of
+              AutoMapperRelationship
+            properties:
+              resources:
+                additionalProperties:
+                  description: AutoMapperRelationshipStatusResource is for inventory
+                    purposes on currently maintained resources
+                  properties:
+                    gvk:
+                      description: The GVK of the resultant resource
+                      properties:
+                        group:
+                          description: The group metadata value for the resource as
+                            specified in the CRD
+                          type: string
+                        kind:
+                          description: The kind metadata value (AKA the name) for
+                            the resource as specified in the CRD
+                          type: string
+                        version:
+                          description: The version metadata value for the resource
+                            as specified in the CRD
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    name:
+                      description: The name of the resultant resource
+                      type: string
+                    namespace:
+                      description: The namespace of the resultant resource
+                      type: string
+                  required:
+                  - gvk
+                  - name
+                  - namespace
+                  type: object
+                description: A map of all resources being managed by this relationship
+                  as a result of the relationship, with the string key being a hash
+                  of the resource attributes
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

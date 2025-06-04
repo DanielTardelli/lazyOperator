@@ -3,6 +3,7 @@
 # It should be run by config/default
 resources:
 - bases/tardelli.com.au_automapperdefinitions.yaml
+- bases/tardelli.com.au_automapperrelationships.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
 
 patches:
@@ -14,6 +15,7 @@ patches:
 # [CERTMANAGER] To enable cert-manager, uncomment all the sections with [CERTMANAGER] prefix.
 # patches here are for enabling the CA injection for each CRD
 #- path: patches/cainjection_in_automapperdefinitions.yaml
+#- path: patches/cainjection_in_automapperrelationships.yaml
 #+kubebuilder:scaffold:crdkustomizecainjectionpatch
 
 # [WEBHOOK] To enable webhook, uncomment the following section

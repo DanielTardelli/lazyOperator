@@ -1,0 +1,27 @@
+# permissions for end users to edit automapperrelationships.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: lazy
+    app.kubernetes.io/managed-by: kustomize
+  name: automapperrelationship-editor-role
+rules:
+- apiGroups:
+  - tardelli.com.au
+  resources:
+  - automapperrelationships
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - tardelli.com.au
+  resources:
+  - automapperrelationships/status
+  verbs:
+  - get

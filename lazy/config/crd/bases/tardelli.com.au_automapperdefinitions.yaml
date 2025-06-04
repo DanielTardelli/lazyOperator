@@ -36,36 +36,54 @@ spec:
             description: AutoMapperDefinitionSpec defines the desired state of AutoMapperDefinition
             properties:
               autoMapperObjects:
-                description: 'Maps: List of maps of relationships between resources
-                  and their config'
+                description: An array of all currently defined relationships between
+                  any cluster resources specified
                 items:
-                  description: 'DT: AutoMapperObject defines a singular relationship
-                    between two resources'
+                  description: Defines a singular relationship and its desired state
+                    at all time
                   properties:
                     basis:
+                      description: ENUM['cluster', 'label', 'namespace'] - Defines
+                        the basis of the relationship, its either cluster wide, based
+                        on resource labels or based on resource namespaces.
                       enum:
                       - cluster
                       - label
                       - namespace
                       type: string
                     labelBasis:
-                      items:
+                      additionalProperties:
                         type: string
-                      type: array
+                      description: If the basis is equal to label, this map will have
+                        the key value pairs of all labels that are to be watched for
+                        this relationship
+                      type: object
                     namespaceBasis:
+                      description: If the basis is equal to namespace, this slice
+                        will contain the namespaces that are to be watched for this
+                        relationship
                       items:
                         type: string
                       type: array
+                    objectName:
+                      description: The unique name for this object
+                      type: string
                     result:
-                      description: 'DT: Required to define the various resources we''ll
-                        be referring to so we don''t get tightly coupled versioning
-                        dependencies'
+                      description: The GVK of the result resource that will determine
+                        what resource will be provisioned in response to a source
+                        resource dependent on the basis of the relationship
                       properties:
                         group:
+                          description: The group metadata value for the resource as
+                            specified in the CRD
                           type: string
                         kind:
+                          description: The kind metadata value (AKA the name) for
+                            the resource as specified in the CRD
                           type: string
                         version:
+                          description: The version metadata value for the resource
+                            as specified in the CRD
                           type: string
                       required:
                       - group
@@ -73,19 +91,20 @@ spec:
                       - version
                       type: object
                     source:
-                      description: 'Source:          Resource type that is being watched
-                        Result:          Resource type that is provisioned as a result
-                        Basis:           Relationship basis, by label, namespace or
-                        cluster-wide LabelBasis:     Array of labels to watch NamespaceBasis:
-                        Array of namespaces to watch DeclaredVars:    Values in resulting
-                        resource declared statically VarMap:          Values in resulting
-                        resource dependent on source (both static and dynamic)'
+                      description: The GVK of the source resource which will be watched
+                        by the controller to decide how to administer the result resources
                       properties:
                         group:
+                          description: The group metadata value for the resource as
+                            specified in the CRD
                           type: string
                         kind:
+                          description: The kind metadata value (AKA the name) for
+                            the resource as specified in the CRD
                           type: string
                         version:
+                          description: The version metadata value for the resource
+                            as specified in the CRD
                           type: string
                       required:
                       - group
@@ -93,19 +112,25 @@ spec:
                       - version
                       type: object
                     varMap:
+                      description: The mappings of variables to the result resources
+                        both static and dynamic/referenced
                       items:
                         description: 'DT : just maps a source attribute to a dest
                           attribute, interpreted based on how it is invoked whether
                           declared or referenced'
                         properties:
                           destinationVar:
+                            description: The JSON path where the value will be deposited
+                              in the resultant resource
                             type: string
                           sourceVar:
+                            description: Either the static value or JSON path to the
+                              attribute in accordance to the above
                             type: string
                           type:
-                            enum:
-                            - static
-                            - referenced
+                            description: ENUM['static', 'referenced'] - Defines whether
+                              the variable will be defined by the user or will reference
+                              a resource attribute from the source
                             type: string
                         required:
                         - destinationVar
@@ -117,10 +142,12 @@ spec:
                   - basis
                   - labelBasis
                   - namespaceBasis
+                  - objectName
                   - result
                   - source
                   type: object
                 type: array
+                uniqueItems: true
             required:
             - autoMapperObjects
             type: object
@@ -128,117 +155,35 @@ spec:
             description: AutoMapperDefinitionStatus defines the observed state of
               AutoMapperDefinition
             properties:
-              mapped:
-                additionalProperties:
-                  description: 'DT: AutoMapperDefinitionStatusMapped is to keep a
-                    list of all relationships defined by user'
+              reconciled:
+                description: Whether or not the cluster's most recently analysed state
+                  was able to be brought into alignment with active relationships
+                type: boolean
+              relationships:
+                description: An array of all relationships maintained by this AutoMapperDefinition
+                  identified by ObjectName
+                items:
+                  description: Object designed to make locating relationships easier
+                    in controller loop
                   properties:
-                    basis:
+                    name:
+                      description: The name of the resultant resource
                       type: string
-                    basisVars:
-                      items:
-                        type: string
-                      type: array
-                    created:
-                      type: boolean
-                    resources:
-                      additionalProperties:
-                        description: 'DT: AutoMapperDefinitionStatusResource is just
-                          the name and namespace of the resource to keep track of
-                          it like an inventory'
-                        properties:
-                          gvk:
-                            description: 'DT: Required to define the various resources
-                              we''ll be referring to so we don''t get tightly coupled
-                              versioning dependencies'
-                            properties:
-                              group:
-                                type: string
-                              kind:
-                                type: string
-                              version:
-                                type: string
-                            required:
-                            - group
-                            - kind
-                            - version
-                            type: object
-                          name:
-                            type: string
-                          namespace:
-                            type: string
-                        required:
-                        - gvk
-                        - name
-                        - namespace
-                        type: object
-                      type: object
-                    result:
-                      description: 'DT: Required to define the various resources we''ll
-                        be referring to so we don''t get tightly coupled versioning
-                        dependencies'
-                      properties:
-                        group:
-                          type: string
-                        kind:
-                          type: string
-                        version:
-                          type: string
-                      required:
-                      - group
-                      - kind
-                      - version
-                      type: object
-                    source:
-                      description: 'Source:    What resource is the controller looking
-                        for Result:    What resource is provisioned as a result Basis:     Is
-                        it based on namespace, cluster-wide, label? BasisVars: Associated
-                        variables with the basis Created:   Whether the relationship
-                        and resultant resources have been created Resources: The provisioned
-                        resources as a result of this relationship'
-                      properties:
-                        group:
-                          type: string
-                        kind:
-                          type: string
-                        version:
-                          type: string
-                      required:
-                      - group
-                      - kind
-                      - version
-                      type: object
-                    varMap:
-                      description: 'DT : just maps a source attribute to a dest attribute,
-                        interpreted based on how it is invoked whether declared or
-                        referenced'
-                      properties:
-                        destinationVar:
-                          type: string
-                        sourceVar:
-                          type: string
-                        type:
-                          enum:
-                          - static
-                          - referenced
-                          type: string
-                      required:
-                      - destinationVar
-                      - sourceVar
-                      - type
-                      type: object
+                    namespace:
+                      description: The namespace of the resultant resource
+                      type: string
+                    objectName:
+                      description: Assigned objectname from relationship
+                      type: string
                   required:
-                  - basis
-                  - basisVars
-                  - created
-                  - result
-                  - source
-                  - varMap
+                  - name
+                  - namespace
+                  - objectName
                   type: object
-                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
-                  of cluster Important: Run "make" to regenerate code after modifying
-                  this file'
-                type: object
+                type: array
+            required:
+            - reconciled
+            - relationships
             type: object
         type: object
     served: true

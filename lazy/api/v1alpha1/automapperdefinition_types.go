@@ -25,84 +25,66 @@ import (
 
 // AutoMapperDefinitionSpec defines the desired state of AutoMapperDefinition
 type AutoMapperDefinitionSpec struct {
-	// Maps: List of maps of relationships between resources and their config
-	Maps []AutoMapperObject `json:"autoMapperObjects"`
+	// An array of all currently defined relationships between any cluster resources specified
+	// +kubebuilder:validation:UniqueItems=true
+	Relationships []AutoMapperDefinitionObject `json:"autoMapperObjects"`
 }
 
-// DT: Required to define the various resources we'll be referring to so we
-// don't get tightly coupled versioning dependencies
+// Defines the GVK of a resource
 type AutoMapperDefinitionGVK struct {
-	Group   string `json:"group"`
+	// The group metadata value for the resource as specified in the CRD
+	Group string `json:"group"`
+	// The version metadata value for the resource as specified in the CRD
 	Version string `json:"version"`
-	Kind    string `json:"kind"`
+	// The kind metadata value (AKA the name) for the resource as specified in the CRD
+	Kind string `json:"kind"`
 }
 
-// DT: AutoMapperObject defines a singular relationship between two resources
-type AutoMapperObject struct {
-	// Source:          Resource type that is being watched
-	// Result:          Resource type that is provisioned as a result
-	// Basis:           Relationship basis, by label, namespace or cluster-wide
-	//	LabelBasis:     Array of labels to watch
-	//  NamespaceBasis: Array of namespaces to watch
-	// DeclaredVars:    Values in resulting resource declared statically
-	// VarMap:          Values in resulting resource dependent on source (both static and dynamic)
+// Defines a singular relationship and its desired state at all time
+type AutoMapperDefinitionObject struct {
+	// The GVK of the source resource which will be watched by the controller to decide
+	// how to administer the result resources
 	Source AutoMapperDefinitionGVK `json:"source"`
+	// The GVK of the result resource that will determine what resource will be provisioned
+	// in response to a source resource dependent on the basis of the relationship
 	Result AutoMapperDefinitionGVK `json:"result"`
 
+	// ENUM['cluster', 'label', 'namespace'] - Defines the basis of the relationship, its
+	// either cluster wide, based on resource labels or based on resource namespaces.
 	// +kubebuilder:validation:Enum=cluster;label;namespace
-	Basis          string    `json:"basis"`
-	LabelBasis     *[]string `json:"labelBasis"`
-	NamespaceBasis *[]string `json:"namespaceBasis"`
+	Basis string `json:"basis"`
+	// If the basis is equal to label, this map will have the key value pairs of all labels
+	// that are to be watched for this relationship
+	Labels *map[string]string `json:"labelBasis"`
+	// If the basis is equal to namespace, this slice will contain the namespaces that are to
+	// be watched for this relationship
+	Namespaces *[]string `json:"namespaceBasis"`
 
+	// The mappings of variables to the result resources both static and dynamic/referenced
 	VarMap *[]AutoMapperVariableMap `json:"varMap,omitempty"`
+
+	// The unique name for this object
+	ObjectName string `json:"objectName"`
 }
 
-// DT : just maps a source attribute to a dest attribute, interpreted based on
-// how it is invoked whether declared or referenced
-type AutoMapperVariableMap struct {
-	// Type:           The variable static or referenced from source
-	// SourceVar:      Can be a json path to source resource or a static value
-	// DestinationVar: JSON path for where to put var in result resource
-
-	// +kubebuilder:validation:Enum=static;referenced
-	Type           string `json:"type"`
-	SourceVar      string `json:"sourceVar"`
-	DestinationVar string `json:"destinationVar"`
+// Object designed to make locating relationships easier in controller loop
+type AutoMapperRelLocator struct {
+	// The namespace of the resultant resource
+	Namespace string `json:"namespace"`
+	// The name of the resultant resource
+	Name string `json:"name"`
+	// Assigned objectname from relationship
+	ObjectName string `json:"objectName"`
 }
 
 // AutoMapperDefinitionStatus defines the observed state of AutoMapperDefinition
 type AutoMapperDefinitionStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-	MappedItems map[string]AutoMapperDefinitionStatusMapped `json:"mapped,omitempty"`
-}
-
-// DT: AutoMapperDefinitionStatusMapped is to keep a list of all relationships defined by
-// user
-type AutoMapperDefinitionStatusMapped struct {
-	// Source:    What resource is the controller looking for
-	// Result:    What resource is provisioned as a result
-	// Basis:     Is it based on namespace, cluster-wide, label?
-	// BasisVars: Associated variables with the basis
-	// Created:   Whether the relationship and resultant resources have been created
-	// Resources: The provisioned resources as a result of this relationship
-	Source    AutoMapperDefinitionGVK  `json:"source"`
-	Result    AutoMapperDefinitionGVK  `json:"result"`
-	Basis     string                   `json:"basis"`
-	BasisVars []string                 `json:"basisVars"`
-	Created   bool                     `json:"created"`
-	VarMap    *[]AutoMapperVariableMap `json:"varMap"`
-
-	Resources map[string]AutoMapperDefinitionStatusResource `json:"resources,omitempty"`
-}
-
-// DT: AutoMapperDefinitionStatusResource is just the name and namespace of
-// the resource to keep track of it like an inventory
-type AutoMapperDefinitionStatusResource struct {
-	Namespace string `json:"namespace"`
-	Name      string `json:"name"`
-
-	GVK AutoMapperDefinitionGVK `json:"gvk"`
+	// Whether or not the cluster's most recently analysed state was able to be
+	// brought into alignment with active relationships
+	Reconciled bool `json:"reconciled"`
+	// An array of all relationships maintained by this AutoMapperDefinition identified
+	// by ObjectName
+	Relationships []AutoMapperRelLocator `json:"relationships"`
 }
 
 //+kubebuilder:object:root=true

@@ -1,0 +1,9 @@
+apiVersion: tardelli.com.au/v1alpha1
+kind: AutoMapperRelationship
+metadata:
+  labels:
+    app.kubernetes.io/name: lazy
+    app.kubernetes.io/managed-by: kustomize
+  name: automapperrelationship-sample
+spec:
+  # TODO(user): Add fields here

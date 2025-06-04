@@ -1,0 +1,23 @@
+# permissions for end users to view automapperrelationships.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: lazy
+    app.kubernetes.io/managed-by: kustomize
+  name: automapperrelationship-viewer-role
+rules:
+- apiGroups:
+  - tardelli.com.au
+  resources:
+  - automapperrelationships
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - tardelli.com.au
+  resources:
+  - automapperrelationships/status
+  verbs:
+  - get
