@@ -87,6 +87,7 @@ func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl
 	}
 
 	// Delete all the relationships we need to
+	// need to consider error handling here
 	for _, loc := range deletion {
 		if err := AutoMapperRelationshipDelete(loc, r, ctx); err != nil {
 			logger.Info("AutoMapperRelationshipDelete FAILED")

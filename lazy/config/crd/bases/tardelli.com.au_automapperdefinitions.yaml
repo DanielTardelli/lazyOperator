@@ -52,19 +52,24 @@ spec:
                       - namespace
                       type: string
                     labelBasis:
-                      additionalProperties:
-                        type: string
                       description: If the basis is equal to label, this map will have
-                        the key value pairs of all labels that are to be watched for
+                        the key value pair of the label that is to be watched for
                         this relationship
+                      properties:
+                        key:
+                          description: Key for the label
+                          type: string
+                        value:
+                          description: Value for the label
+                          type: string
+                      required:
+                      - key
+                      - value
                       type: object
                     namespaceBasis:
                       description: If the basis is equal to namespace, this slice
-                        will contain the namespaces that are to be watched for this
-                        relationship
-                      items:
-                        type: string
-                      type: array
+                        will contain the namespace that will be watched for this relationship
+                      type: string
                     objectName:
                       description: The unique name for this object
                       type: string

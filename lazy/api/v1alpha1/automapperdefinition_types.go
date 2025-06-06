@@ -40,6 +40,14 @@ type AutoMapperDefinitionGVK struct {
 	Kind string `json:"kind"`
 }
 
+// Defines a label kv pair
+type AutoMapperDefinitionLabel struct {
+	// Key for the label
+	Key string `json:"key"`
+	// Value for the label
+	Value string `json:"value"`
+}
+
 // Defines a singular relationship and its desired state at all time
 type AutoMapperDefinitionObject struct {
 	// The GVK of the source resource which will be watched by the controller to decide
@@ -53,12 +61,12 @@ type AutoMapperDefinitionObject struct {
 	// either cluster wide, based on resource labels or based on resource namespaces.
 	// +kubebuilder:validation:Enum=cluster;label;namespace
 	Basis string `json:"basis"`
-	// If the basis is equal to label, this map will have the key value pairs of all labels
-	// that are to be watched for this relationship
-	Labels *map[string]string `json:"labelBasis"`
-	// If the basis is equal to namespace, this slice will contain the namespaces that are to
-	// be watched for this relationship
-	Namespaces *[]string `json:"namespaceBasis"`
+	// If the basis is equal to label, this map will have the key value pair of the label
+	// that is to be watched for this relationship
+	Label *AutoMapperDefinitionLabel `json:"labelBasis"`
+	// If the basis is equal to namespace, this slice will contain the namespace that will be
+	// watched for this relationship
+	Namespaces *string `json:"namespaceBasis"`
 
 	// The mappings of variables to the result resources both static and dynamic/referenced
 	VarMap *[]AutoMapperVariableMap `json:"varMap,omitempty"`

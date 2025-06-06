@@ -46,12 +46,12 @@ type AutoMapperRelationshipSpec struct {
 	// ENUM['cluster', 'label', 'namespace'] - Defines the basis of the relationship, its
 	// either cluster wide, based on resource labels or based on resource namespaces.
 	Basis string `json:"basis"`
-	// If the basis is equal to label, this map will have the key value pairs of all labels
-	// that are to be watched for this relationship
-	Labels map[string]string `json:"labels"`
-	// If the basis is equal to namespace, this slice will contain the namespaces that are to
+	// If the basis is equal to label, this map will have label key value pair that is to be
+	// watched for this relationship
+	Label AutoMapperDefinitionLabel `json:"labels"`
+	// If the basis is equal to namespace, this slice will contain the namespace that is to
 	// be watched for this relationship
-	Namespaces []string `json:"namespaces"`
+	Namespace string `json:"namespace"`
 	// The mappings of variables to the result resources both static and dynamic/referenced
 	VarMap *[]AutoMapperVariableMap `json:"varMap"`
 }
@@ -66,11 +66,20 @@ type AutoMapperRelationshipStatusResource struct {
 	GVK AutoMapperDefinitionGVK `json:"gvk"`
 }
 
+// AutoMapperRelationshipStatusMappings is for holding the inventory details of the source and dest
+// resources in the given relationship
+type AutoMapperRelationshipStatusMappings struct {
+	// The GVK and namespaced name of the source resource
+	Source AutoMapperRelationshipStatusResource `json:"source"`
+	// The GVK and namespaced name of the result resource
+	Result AutoMapperRelationshipStatusResource `json:"result"`
+}
+
 // AutoMapperRelationshipStatus defines the observed state of AutoMapperRelationship
 type AutoMapperRelationshipStatus struct {
 	// A map of all resources being managed by this relationship as a result of the relationship,
 	// with the string key being a hash of the resource attributes
-	Resources map[string]AutoMapperRelationshipStatusResource `json:"resources,omitempty"`
+	Resources []AutoMapperRelationshipStatusMappings `json:"resources,omitempty"`
 }
 
 // +kubebuilder:object:root=true

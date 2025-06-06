@@ -41,17 +41,23 @@ spec:
                   labels or based on resource namespaces.
                 type: string
               labels:
-                additionalProperties:
-                  type: string
-                description: If the basis is equal to label, this map will have the
-                  key value pairs of all labels that are to be watched for this relationship
+                description: If the basis is equal to label, this map will have label
+                  key value pair that is to be watched for this relationship
+                properties:
+                  key:
+                    description: Key for the label
+                    type: string
+                  value:
+                    description: Value for the label
+                    type: string
+                required:
+                - key
+                - value
                 type: object
-              namespaces:
+              namespace:
                 description: If the basis is equal to namespace, this slice will contain
-                  the namespaces that are to be watched for this relationship
-                items:
-                  type: string
-                type: array
+                  the namespace that is to be watched for this relationship
+                type: string
               result:
                 description: The GVK of the result resource that will determine what
                   resource will be provisioned in response to a source resource dependent
@@ -124,7 +130,7 @@ spec:
             required:
             - basis
             - labels
-            - namespaces
+            - namespace
             - result
             - source
             - varMap
@@ -134,45 +140,87 @@ spec:
               AutoMapperRelationship
             properties:
               resources:
-                additionalProperties:
-                  description: AutoMapperRelationshipStatusResource is for inventory
-                    purposes on currently maintained resources
-                  properties:
-                    gvk:
-                      description: The GVK of the resultant resource
-                      properties:
-                        group:
-                          description: The group metadata value for the resource as
-                            specified in the CRD
-                          type: string
-                        kind:
-                          description: The kind metadata value (AKA the name) for
-                            the resource as specified in the CRD
-                          type: string
-                        version:
-                          description: The version metadata value for the resource
-                            as specified in the CRD
-                          type: string
-                      required:
-                      - group
-                      - kind
-                      - version
-                      type: object
-                    name:
-                      description: The name of the resultant resource
-                      type: string
-                    namespace:
-                      description: The namespace of the resultant resource
-                      type: string
-                  required:
-                  - gvk
-                  - name
-                  - namespace
-                  type: object
                 description: A map of all resources being managed by this relationship
                   as a result of the relationship, with the string key being a hash
                   of the resource attributes
-                type: object
+                items:
+                  description: AutoMapperRelationshipStatusMappings is for holding
+                    the inventory details of the source and dest resources in the
+                    given relationship
+                  properties:
+                    result:
+                      description: The GVK and namespaced name of the result resource
+                      properties:
+                        gvk:
+                          description: The GVK of the resultant resource
+                          properties:
+                            group:
+                              description: The group metadata value for the resource
+                                as specified in the CRD
+                              type: string
+                            kind:
+                              description: The kind metadata value (AKA the name)
+                                for the resource as specified in the CRD
+                              type: string
+                            version:
+                              description: The version metadata value for the resource
+                                as specified in the CRD
+                              type: string
+                          required:
+                          - group
+                          - kind
+                          - version
+                          type: object
+                        name:
+                          description: The name of the resultant resource
+                          type: string
+                        namespace:
+                          description: The namespace of the resultant resource
+                          type: string
+                      required:
+                      - gvk
+                      - name
+                      - namespace
+                      type: object
+                    source:
+                      description: The GVK and namespaced name of the source resource
+                      properties:
+                        gvk:
+                          description: The GVK of the resultant resource
+                          properties:
+                            group:
+                              description: The group metadata value for the resource
+                                as specified in the CRD
+                              type: string
+                            kind:
+                              description: The kind metadata value (AKA the name)
+                                for the resource as specified in the CRD
+                              type: string
+                            version:
+                              description: The version metadata value for the resource
+                                as specified in the CRD
+                              type: string
+                          required:
+                          - group
+                          - kind
+                          - version
+                          type: object
+                        name:
+                          description: The name of the resultant resource
+                          type: string
+                        namespace:
+                          description: The namespace of the resultant resource
+                          type: string
+                      required:
+                      - gvk
+                      - name
+                      - namespace
+                      type: object
+                  required:
+                  - result
+                  - source
+                  type: object
+                type: array
             type: object
         type: object
     served: true
