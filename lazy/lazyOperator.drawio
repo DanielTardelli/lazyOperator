@@ -1,178 +1,196 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:139.0) Gecko/20100101 Firefox/139.0" version="27.1.3">
   <diagram name="Page-1" id="Jz4XdLGCITrNXH1o6GpN">
-    <mxGraphModel dx="1380" dy="2415" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1074" dy="2415" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="50" y="130" width="570" height="770" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-3" value="AutoMapperDefinition" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-3" value="AutoMapperDefinition" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="60" y="140" width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="60" y="180" width="550" height="540" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-5" value="AutoMapperDefinitionSpec" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-5" value="AutoMapperDefinitionSpec" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;" parent="1" vertex="1">
           <mxGeometry x="70" y="190" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-11" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-11" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="60" y="730" width="550" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-11">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-11" vertex="1">
           <mxGeometry width="550" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-8" value="&lt;div&gt;&lt;b&gt;BOOL Reconciled&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Whether or not the cluster&#39;s most recently analysed state was able to be brought into alignment with active relationships&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;[]AUTOMAPPERRELLOCATOR Relationships&lt;/b&gt;&lt;/div&gt;&lt;div&gt;An array of all relationships maintained by this AutoMapperDefinition identified by ObjectName&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-11">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-8" value="&lt;div&gt;&lt;b&gt;BOOL Reconciled&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Whether or not the cluster&#39;s most recently analysed state was able to be brought into alignment with active relationships&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;[]AUTOMAPPERRELLOCATOR Relationships&lt;/b&gt;&lt;/div&gt;&lt;div&gt;An array of all relationships maintained by this AutoMapperDefinition identified by ObjectName&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-11" vertex="1">
           <mxGeometry x="10" y="50" width="530" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-7" value="&lt;div&gt;AutoMapperDefinitionStatus&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-11">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-7" value="&lt;div&gt;AutoMapperDefinitionStatus&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-11" vertex="1">
           <mxGeometry x="10" y="10" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-12" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-12" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="70" y="280" width="540" height="510" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-12">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-12" vertex="1">
           <mxGeometry width="530" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-16" value="AutoMapperDefinitionObject" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-12">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-16" value="AutoMapperDefinitionObject" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-12" vertex="1">
           <mxGeometry x="10" y="10" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-20" value="&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Source&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the source resource which will be watched by the controller to decide how to administer the result resources&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Result&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the result resource that will determine what resource will be provisioned in response to a source resource dependent on the basis of the relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Basis&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;cluster&#39;, &#39;label&#39;, &#39;namespace&#39;] - Defines the basis of the relationship, its either cluster wide, based on resource labels or based on resource namespaces.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*MAP[STRING]STRING Labels&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to label, this map will have the key value pairs of all labels that are to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]STRING Namespaces&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to namespace, this slice will contain the namespaces that are to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]AUTOMAPPERVARIABLEMAP VarMap&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The mappings of variables to the result resources both static and dynamic/referenced&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING ObjectName&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The unique name for this object&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-12">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-20" value="&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Source&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the source resource which will be watched by the controller to decide how to administer the result resources&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Result&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the result resource that will determine what resource will be provisioned in response to a source resource dependent on the basis of the relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Basis&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;cluster&#39;, &#39;label&#39;, &#39;namespace&#39;] - Defines the basis of the relationship, its either cluster wide, based on resource labels or based on resource namespaces.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*AUTOMAPPERDEFINITIONLABEL Label&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to label, this map will have the key value pair of the label that is to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to namespace, this slice will contain the namespace that will be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]AUTOMAPPERVARIABLEMAP VarMap&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The mappings of variables to the result resources both static and dynamic/referenced&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING ObjectName&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The unique name for this object&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-12" vertex="1">
           <mxGeometry x="10" y="50" width="510" height="370" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-13" value="&lt;div&gt;&lt;b&gt;[]AUTOMAPPEROBJECT Relationships&lt;/b&gt;&lt;/div&gt;An array of all currently defined relationships between any cluster resources specified" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-13" value="&lt;div&gt;&lt;b&gt;[]AUTOMAPPEROBJECT Relationships&lt;/b&gt;&lt;/div&gt;An array of all currently defined relationships between any cluster resources specified" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
           <mxGeometry x="70" y="230" width="530" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-19" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-19" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="50" y="-100" width="420" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-19">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="gCLuCJBF7J6JRoPqPi5N-19" vertex="1">
           <mxGeometry width="420" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-17" value="AutoMapperDefinitionGVK" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-19">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-17" value="AutoMapperDefinitionGVK" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-19" vertex="1">
           <mxGeometry x="10" y="10" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-18" value="&lt;div&gt;&lt;b&gt;STRING Group&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The group metadata value for the resource as specified in the CRD&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Version&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The version metadata value for the resource as specified in the CRD&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Kind&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The kind metadata value (AKA the name) for the resource as specified in the CRD&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-19">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-18" value="&lt;div&gt;&lt;b&gt;STRING Group&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The group metadata value for the resource as specified in the CRD&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Version&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The version metadata value for the resource as specified in the CRD&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Kind&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The kind metadata value (AKA the name) for the resource as specified in the CRD&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-19" vertex="1">
           <mxGeometry x="10" y="50" width="400" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-25" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-25" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="490" y="-140" width="420" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-25">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" parent="gCLuCJBF7J6JRoPqPi5N-25" vertex="1">
           <mxGeometry width="420" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-23" value="AutoMapperVariableMap" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-25">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-23" value="AutoMapperVariableMap" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-25" vertex="1">
           <mxGeometry x="10" y="10" width="230" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-24" value="&lt;div&gt;&lt;b&gt;STRING Type&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;static&#39;, &#39;referenced&#39;] - Defines whether the variable will be defined by the user or will reference a resource attribute from the source&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING SourceVar&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Either the static value or JSON path to the attribute in accordance to the above&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING DestinationVar&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The JSON path where the value will be deposited in the resultant resource&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-25">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-24" value="&lt;div&gt;&lt;b&gt;STRING Type&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;static&#39;, &#39;referenced&#39;] - Defines whether the variable will be defined by the user or will reference a resource attribute from the source&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING SourceVar&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Either the static value or JSON path to the attribute in accordance to the above&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING DestinationVar&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The JSON path where the value will be deposited in the resultant resource&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-25" vertex="1">
           <mxGeometry x="10" y="50" width="400" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="640" y="130" width="570" height="860" as="geometry" />
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="640" y="130" width="570" height="820" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-28" value="AutoMapperRelationship" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-28" value="AutoMapperRelationship" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="650" y="140" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-31" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-31" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="650" y="180" width="550" height="450" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-39" value="&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Source&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the source resource which will be watched by the controller to decide how to administer the result resources&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Result&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the result resource that will determine what resource will be provisioned in response to a source resource dependent on the basis of the relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Basis&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;cluster&#39;, &#39;label&#39;, &#39;namespace&#39;] - Defines the basis of the relationship, its either cluster wide, based on resource labels or based on resource namespaces.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*MAP[STRING]STRING Labels&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to label, this map will have the key value pairs of all labels that are to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]STRING Namespaces&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to namespace, this slice will contain the namespaces that are to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]AUTOMAPPERVARIABLEMAP VarMap&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The mappings of variables to the result resources both static and dynamic/referenced&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-39" value="&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Source&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the source resource which will be watched by the controller to decide how to administer the result resources&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK Result&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the result resource that will determine what resource will be provisioned in response to a source resource dependent on the basis of the relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Basis&lt;/b&gt;&lt;/div&gt;&lt;div&gt;ENUM[&#39;cluster&#39;, &#39;label&#39;, &#39;namespace&#39;] - Defines the basis of the relationship, its either cluster wide, based on resource labels or based on resource namespaces.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*AUTOMAPPERDEFINITIONLABEL Label&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to label, this map will have the key value pair of the label that is to be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;If the basis is equal to namespace, this slice will contain the namespace that will be watched for this relationship&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;*[]AUTOMAPPERVARIABLEMAP VarMap&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The mappings of variables to the result resources both static and dynamic/referenced&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="240" width="530" height="380" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-41" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="650" y="640" width="550" height="340" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-41">
-          <mxGeometry width="550" height="340" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-40" value="" style="group" vertex="1" connectable="0" parent="gCLuCJBF7J6JRoPqPi5N-41">
-          <mxGeometry x="10" y="10" width="530" height="320" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-34" value="&lt;div&gt;&lt;b&gt;MAP[STRING]AUTOMAPPERRELATIONSHIPSTATUSRESOURCE&lt;/b&gt;&lt;/div&gt;&lt;div&gt;A map of all resources being managed by this relationship as a result of the relationship, with the string key being a hash of the resource attributes&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-40">
-          <mxGeometry y="50" width="530" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-35" value="&lt;div&gt;AutoMapperRelationshipStatus&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-40">
-          <mxGeometry width="280" height="36.67" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-36" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-40">
-          <mxGeometry y="120" width="530" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-37" value="AutoMapperRelationshipStatusResource" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-40">
-          <mxGeometry x="10" y="130" width="360" height="36.67" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-38" value="&lt;div&gt;&lt;b&gt;STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The namespace of the resultant resource&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Name&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The name of the resultant resource&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK GVK&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the resultant resource&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-40">
-          <mxGeometry x="10" y="175" width="510" height="135" as="geometry" />
-        </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-42" value="&lt;div&gt;AutoMapperRelationshipSpec&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-42" value="&lt;div&gt;AutoMapperRelationshipSpec&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="193.32999999999998" width="280" height="36.67" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-9" target="gCLuCJBF7J6JRoPqPi5N-39">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-9" target="gCLuCJBF7J6JRoPqPi5N-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-44" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-44" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="930" y="-120" width="420" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-45" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-44">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-45" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="gCLuCJBF7J6JRoPqPi5N-44" vertex="1">
           <mxGeometry y="40" width="420" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-46" value="AutoMapperRelLocator" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-44">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-46" value="AutoMapperRelLocator" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-44" vertex="1">
           <mxGeometry x="10" y="50" width="230" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-47" value="&lt;div&gt;&lt;b&gt;STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The namespace of the resultant resource&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Name&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The name of the resultant resource&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING ObjectName&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Assigned objectname from relationship&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="gCLuCJBF7J6JRoPqPi5N-44">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-47" value="&lt;div&gt;&lt;b&gt;STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The namespace of the resultant resource&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Name&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The name of the resultant resource&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING ObjectName&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Assigned objectname from relationship&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-44" vertex="1">
           <mxGeometry x="10" y="90" width="400" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-51" target="gCLuCJBF7J6JRoPqPi5N-52">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-51" target="gCLuCJBF7J6JRoPqPi5N-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-51" target="gCLuCJBF7J6JRoPqPi5N-53">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-51" target="gCLuCJBF7J6JRoPqPi5N-53" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-51" value="AutoMapperDefinittion" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-51" value="AutoMapperDefinittion" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="60" y="1410" width="235" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="660" y="1420.0588235294122" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52" target="gCLuCJBF7J6JRoPqPi5N-56">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52" target="gCLuCJBF7J6JRoPqPi5N-56" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52" target="gCLuCJBF7J6JRoPqPi5N-59">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-52" target="gCLuCJBF7J6JRoPqPi5N-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-52" value="AutoMapperRelationship" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-52" value="AutoMapperRelationship" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="365" y="1280" width="235" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-64">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-64" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-67">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-67" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-66">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gCLuCJBF7J6JRoPqPi5N-53" target="gCLuCJBF7J6JRoPqPi5N-66" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-53" value="AutoMapperRelationship" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-53" value="AutoMapperRelationship" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="365" y="1520" width="235" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-56" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-56" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1260" width="235" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-59" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-59" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1140" width="235" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-63" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-63" value="ScaledObject" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1380" width="235" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-64" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-64" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1520" width="235" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-66" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-66" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1760" width="235" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="gCLuCJBF7J6JRoPqPi5N-67" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-67" value="VPA" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="660" y="1640" width="235" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="90" y="920" width="530" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-2" value="AutoMapperRelationshipResource" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="920" width="310" height="36.67" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-3" value="&lt;div&gt;&lt;b&gt;STRING Namespace&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The namespace of the resultant resource&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Name&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The name of the resultant resource&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERDEFINITIONGVK GVK&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK of the resultant resource&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="965" width="510" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="640" width="550" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-40" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="660" y="650" width="530" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-34" value="&lt;div&gt;&lt;b&gt;[]AUTOMAPPERRELATIONSHIPSTATUSREMAPPINGS Resources&lt;/b&gt;&lt;/div&gt;&lt;div&gt;A map of all resources being managed by this relationship as a result of the relationship, with the string key being a hash of the resource attributes&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-40" vertex="1">
+          <mxGeometry y="50" width="530" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-35" value="&lt;div&gt;AutoMapperRelationshipStatus&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-40" vertex="1">
+          <mxGeometry width="280" height="36.67" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-36" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="gCLuCJBF7J6JRoPqPi5N-40" vertex="1">
+          <mxGeometry y="120" width="530" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-37" value="AutoMapperRelationshipStatusMappings" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-40" vertex="1">
+          <mxGeometry x="10" y="130" width="360" height="36.67" as="geometry" />
+        </mxCell>
+        <mxCell id="gCLuCJBF7J6JRoPqPi5N-38" value="&lt;div&gt;&lt;b&gt;AUTOMAPPERRELATIONSHIPRESOURCE Source&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK and namespaced name of the source resource&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AUTOMAPPERRELATIONSHIPRESOURCE Result&lt;/b&gt;&lt;/div&gt;&lt;div&gt;The GVK and namespaced name of the result resource&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="gCLuCJBF7J6JRoPqPi5N-40" vertex="1">
+          <mxGeometry x="10" y="175" width="510" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-8" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="930" y="-250" width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="acV9nJXrhjiphXpV1__c-8">
+          <mxGeometry width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-6" value="AutoMapperDefinitionLabel" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fillColor=default;gradientColor=none;strokeColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="acV9nJXrhjiphXpV1__c-8">
+          <mxGeometry x="10" y="10" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="acV9nJXrhjiphXpV1__c-7" value="&lt;div&gt;&lt;b&gt;STRING Key&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Key for the label&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;STRING Value&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Value for the label&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="acV9nJXrhjiphXpV1__c-8">
+          <mxGeometry x="10" y="50" width="400" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
