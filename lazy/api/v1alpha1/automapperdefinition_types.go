@@ -26,7 +26,6 @@ import (
 // AutoMapperDefinitionSpec defines the desired state of AutoMapperDefinition
 type AutoMapperDefinitionSpec struct {
 	// An array of all currently defined relationships between any cluster resources specified
-	// +kubebuilder:validation:UniqueItems=true
 	Relationships []AutoMapperDefinitionObject `json:"autoMapperObjects"`
 }
 
@@ -66,7 +65,7 @@ type AutoMapperDefinitionObject struct {
 	Label *AutoMapperDefinitionLabel `json:"labelBasis"`
 	// If the basis is equal to namespace, this slice will contain the namespace that will be
 	// watched for this relationship
-	Namespaces *string `json:"namespaceBasis"`
+	Namespace *string `json:"namespaceBasis"`
 
 	// The mappings of variables to the result resources both static and dynamic/referenced
 	VarMap *[]AutoMapperVariableMap `json:"varMap,omitempty"`

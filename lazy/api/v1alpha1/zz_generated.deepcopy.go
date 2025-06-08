@@ -123,8 +123,8 @@ func (in *AutoMapperDefinitionObject) DeepCopyInto(out *AutoMapperDefinitionObje
 		*out = new(AutoMapperDefinitionLabel)
 		**out = **in
 	}
-	if in.Namespaces != nil {
-		in, out := &in.Namespaces, &out.Namespaces
+	if in.Namespace != nil {
+		in, out := &in.Namespace, &out.Namespace
 		*out = new(string)
 		**out = **in
 	}

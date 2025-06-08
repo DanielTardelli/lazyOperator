@@ -1,8 +1,6 @@
 module github.com/DanielTardelli/lazyOperator
 
-go 1.23.8
-
-toolchain go1.24.3
+go 1.24
 
 require (
 	github.com/onsi/ginkgo/v2 v2.23.4

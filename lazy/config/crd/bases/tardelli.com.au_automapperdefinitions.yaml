@@ -152,7 +152,6 @@ spec:
                   - source
                   type: object
                 type: array
-                uniqueItems: true
             required:
             - autoMapperObjects
             type: object

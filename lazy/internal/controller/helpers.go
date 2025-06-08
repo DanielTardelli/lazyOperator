@@ -1,43 +1,44 @@
 package controller
 
 import (
-	"context"
-	"crypto/sha256"
-	"encoding/hex"
-
 	tardellicomauv1alpha1 "github.com/DanielTardelli/lazyOperator/api/v1alpha1"
-	unstructuredv1 "k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	"sigs.k8s.io/controller-runtime/pkg/client"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
-// For converting the requested relationships to hash for uniqueness
-func RelationshipHash(source tardellicomauv1alpha1.AutoMapperDefinitionGVK, result tardellicomauv1alpha1.AutoMapperDefinitionGVK,
-	basis string, basisVars []string) string {
-	var basisVarsConcat string
-	// _ is for unused vars in Go
-	for _, str := range basisVars {
-		basisVarsConcat += str
+// for taking two unstructured objects and converting to standardised object
+// for comparison
+func toStatusResource(src, res *unstructured.Unstructured) (*tardellicomauv1alpha1.AutoMapperRelationshipStatusMappings, error) {
+	convert := func(obj *unstructured.Unstructured) tardellicomauv1alpha1.AutoMapperRelationshipStatusResource {
+		return tardellicomauv1alpha1.AutoMapperRelationshipStatusResource{
+			Namespace: obj.GetNamespace(),
+			Name:      obj.GetName(),
+			GVK: tardellicomauv1alpha1.AutoMapperDefinitionGVK{
+				Group:   obj.GetObjectKind().GroupVersionKind().Group,
+				Version: obj.GetObjectKind().GroupVersionKind().Version,
+				Kind:    obj.GetObjectKind().GroupVersionKind().Kind,
+			},
+		}
 	}
 
-	concatenated := source.Kind + "|" + result.Kind + "|" + basis + "|" + basisVarsConcat
-	hash := sha256.Sum256([]byte(concatenated))
-	return hex.EncodeToString(hash[:])
+	return &tardellicomauv1alpha1.AutoMapperRelationshipStatusMappings{
+		Source: convert(src),
+		Result: convert(res),
+	}, nil
 }
 
-// Factory method for getting object constructor from resource type
-func DynamicObjectRetrieve(c client.Client, name, namespace, group, version, kind string) *unstructuredv1.Unstructured {
-	gvk := schema.GroupVersionKind{Group: group, Version: version, Kind: kind}
-
-	// Create unstructured object
-	obj := unstructuredv1.Unstructured{}
-	obj.SetGroupVersionKind(gvk)
-
-	key := client.ObjectKey{Namespace: namespace, Name: name}
-
-	if err := c.Get(context.TODO(), key, &obj); err != nil {
-		return nil
-	} else {
-		return &obj
+// for merging labels that already exist on an unstructured object with the labels
+// we require for our relationship and resource location
+func safeMergeLabels(customLabels, srcLabels map[string]string) map[string]string {
+	if srcLabels == nil {
+		return customLabels
 	}
+
+	for key, val := range customLabels {
+		_, exists := srcLabels[key]
+		if !exists {
+			srcLabels[key] = val
+		}
+	}
+
+	return srcLabels
 }

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazy
+  template:
+    metadata:
+      labels:
+        app: lazy
+    spec:
+      serviceAccountName: operator-sa
+      containers:
+      - name: lazy
+        image: lazy:latest
+        imagePullPolicy: Never
+        command:
+          - /manager
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-admin-full-access
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: operator-sa
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: operator-sa-cluster-admin-binding
+subjects:
+- kind: ServiceAccount
+  name: operator-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin-full-access
+  apiGroup: rbac.authorization.k8s.io

@@ -1,14 +1,23 @@
 {
-    "name": "K8s Operator Dev",
-    "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "settings": {
-      "terminal.integrated.shell.linux": "/bin/bash"
-    },
-    "extensions": [
-      "ms-vscode.go",
-      "ms-kubernetes-tools.vscode-kubernetes-tools"
-    ],
-    "postCreateCommand": "go version && operator-sdk version && kubectl version --client"
-  }
+  "name": "K8s Operator Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--privileged",                  // Needed if running DinD (e.g., with Kind inside container)
+    "-v", "/var/run/docker.sock:/var/run/docker.sock" // Allows container to use host's Docker
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "go.toolsManagement.autoUpdate": true,
+    "go.useLanguageServer": true
+  },
+  "extensions": [
+    "ms-vscode.go",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "redhat.vscode-yaml",
+    "eamodio.gitlens"
+  ],
+  "postCreateCommand": "go version && operator-sdk version && kubectl version --client && kind version",
+  "remoteUser": "root"
+}

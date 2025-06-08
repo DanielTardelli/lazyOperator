@@ -25,6 +25,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	tardellicomauv1alpha1 "github.com/DanielTardelli/lazyOperator/api/v1alpha1"
@@ -49,9 +50,13 @@ type AutoMapperDefinitionReconciler struct {
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.3/pkg/reconcile
+
+const (
+	DefinitionFinalizer = "tardelli.com.au/automapperdefinition-cleanup"
+)
+
 func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	var logger = log.FromContext(ctx)
-
 	var cr tardellicomauv1alpha1.AutoMapperDefinition
 
 	// Gets the definition of the resource and handles errors on retrieval
@@ -63,6 +68,40 @@ func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl
 
 		logger.Info("AutoMapperDefinition failed to be retrieved. Exiting...")
 		return ctrl.Result{RequeueAfter: time.Minute * 20}, err
+	}
+
+	// Ensures that finalizers are on the object and graceful deletion with finalizer
+	// consideration
+	if cr.ObjectMeta.DeletionTimestamp.IsZero() {
+		if !controllerutil.ContainsFinalizer(&cr, DefinitionFinalizer) {
+			controllerutil.AddFinalizer(&cr, DefinitionFinalizer)
+			if err := r.Update(ctx, &cr); err != nil {
+				logger.Error(err, "Failed to add finalizer")
+				return ctrl.Result{}, err
+			}
+
+			// Return early — the object has been updated; we’ll reconcile again
+			return ctrl.Result{}, nil
+		}
+	} else {
+		if controllerutil.ContainsFinalizer(&cr, DefinitionFinalizer) {
+			// Perform cleanup (e.g., delete ScaledObjects, remove relationships)
+			for _, rel := range cr.Status.Relationships {
+				if err := AutoMapperRelationshipDelete(rel, r, ctx); err != nil {
+					logger.Error(err, "Failed to clean up relationship")
+					return ctrl.Result{}, err // try again later
+				}
+			}
+
+			// Remove finalizer to allow actual deletion
+			controllerutil.RemoveFinalizer(&cr, DefinitionFinalizer)
+			if err := r.Update(ctx, &cr); err != nil {
+				return ctrl.Result{}, err
+			}
+
+			// Stop reconciling, resource is about to be deleted
+			return ctrl.Result{}, nil
+		}
 	}
 
 	var creation = []tardellicomauv1alpha1.AutoMapperDefinitionObject{} // full definition
@@ -95,7 +134,7 @@ func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl
 		}
 
 		// Remove out of relationships so that the update function updates the right resources
-		slices.DeleteFunc(cr.Status.Relationships, func(rel tardellicomauv1alpha1.AutoMapperRelLocator) bool {
+		cr.Status.Relationships = slices.DeleteFunc(cr.Status.Relationships, func(rel tardellicomauv1alpha1.AutoMapperRelLocator) bool {
 			return rel.ObjectName == loc.ObjectName
 		})
 	}
@@ -110,14 +149,24 @@ func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl
 
 	// Provision new
 	for _, object := range creation {
-		if err := AutoMapperRelationshipCreate(object, r, ctx); err != nil {
+		newRelationship, err := AutoMapperRelationshipCreate(object, r, ctx, &cr)
+		if err != nil {
 			logger.Info("AutoMapperRelationshipCreation FAILED")
 			return ctrl.Result{RequeueAfter: time.Minute * 20}, err
+		} else {
+			cr.Status.Relationships = append(cr.Status.Relationships, tardellicomauv1alpha1.AutoMapperRelLocator{
+				ObjectName: object.ObjectName,
+				Name:       newRelationship.GetName(),
+				Namespace:  newRelationship.GetNamespace(),
+			})
 		}
 	}
 
 	// Update the object with the new status
-	r.Update(ctx, &cr)
+	if err := r.Status().Update(ctx, &cr); err != nil {
+		logger.Error(err, "Failed to update AutoMapperDefinition status")
+		return ctrl.Result{RequeueAfter: time.Minute * 2}, err
+	}
 
 	// Begin requeue timer
 	return ctrl.Result{RequeueAfter: time.Minute * 5}, nil
