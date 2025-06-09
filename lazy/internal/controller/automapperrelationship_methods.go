@@ -442,7 +442,7 @@ func AutoMapperRelationshipUpdate(loc tardellicomauv1alpha1.AutoMapperRelLocator
 				return err
 			}
 
-			res, err := toStatusResource(obj.Source, obj.Result)
+			res, err := toStatusResource(obj.Source, newRsrc)
 			if err != nil {
 				return err
 			}
@@ -466,7 +466,7 @@ func AutoMapperRelationshipUpdate(loc tardellicomauv1alpha1.AutoMapperRelLocator
 
 	cr.Status.Resources = filteredList
 
-	if err := r.Update(ctx, cr); err != nil {
+	if err := r.Status().Update(ctx, cr); err != nil {
 		return err
 	}
 
