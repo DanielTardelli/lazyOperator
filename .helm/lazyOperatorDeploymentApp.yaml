@@ -1,17 +1,36 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: lazyoperator
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/DanielTardelli/lazyOperator.git'
     targetRevision: HEAD
-    path: .k8
+    path: .k8/operator
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: lazy
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lazyoperatortests
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/DanielTardelli/lazyOperator.git'
+    targetRevision: HEAD
+    path: .k8/tests
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: lazytests
   syncPolicy:
     automated:
       prune: false

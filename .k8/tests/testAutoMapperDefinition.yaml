@@ -13,7 +13,8 @@ spec:
       group: ""
       version: v1
       kind: ConfigMap
-    basis: cluster
+    basis: namespace
+    namespace: lazytests
     varMap:
     - type: static
       sourceVar: testing123
