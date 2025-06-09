@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-org/your-repo.git'
+    repoURL: 'https://github.com/DanielTardelli/lazyOperator.git'
     targetRevision: HEAD
-    path: my-app
+    path: .k8
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: your-app-namespace
+    namespace: lazy
   syncPolicy:
     automated:
       prune: false
