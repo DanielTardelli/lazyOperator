@@ -35,7 +35,7 @@ spec:
           spec:
             description: AutoMapperDefinitionSpec defines the desired state of AutoMapperDefinition
             properties:
-              autoMapperObjects:
+              relationships:
                 description: An array of all currently defined relationships between
                   any cluster resources specified
                 items:
@@ -136,6 +136,9 @@ spec:
                             description: ENUM['static', 'referenced'] - Defines whether
                               the variable will be defined by the user or will reference
                               a resource attribute from the source
+                            enum:
+                            - static
+                            - referenced
                             type: string
                         required:
                         - destinationVar
@@ -145,15 +148,13 @@ spec:
                       type: array
                   required:
                   - basis
-                  - labelBasis
-                  - namespaceBasis
                   - objectName
                   - result
                   - source
                   type: object
                 type: array
             required:
-            - autoMapperObjects
+            - relationships
             type: object
           status:
             description: AutoMapperDefinitionStatus defines the observed state of

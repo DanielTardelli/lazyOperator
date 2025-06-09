@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-sleeper
+  labels:
+    app: test-sleeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-sleeper
+  template:
+    metadata:
+      labels:
+        app: test-sleeper
+    spec:
+      containers:
+      - name: sleeper
+        image: alpine:latest
+        command: ["/bin/sh", "-c", "sleep infinity"]
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "16Mi"
+          limits:
+            cpu: "50m"
+            memory: "64Mi"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-sleeper2
+  labels:
+    app: test-sleeper2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-sleeper2
+  template:
+    metadata:
+      labels:
+        app: test-sleeper2
+    spec:
+      containers:
+      - name: sleeper2
+        image: alpine:latest
+        command: ["/bin/sh", "-c", "sleep infinity"]
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "16Mi"
+          limits:
+            cpu: "50m"
+            memory: "64Mi"

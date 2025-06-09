@@ -214,6 +214,10 @@ func AutoMapperRelationshipResourceHandler(operation string, ctx context.Context
 		}
 	}
 
+	// must ensure that the namespace of the dst resource matches the relationships to
+	// set ownership or operator throws error
+	dst.SetNamespace(rel.GetNamespace())
+
 	if operation == "create" {
 		// if we're creating from scratch, ensure that linking labels are present
 		labels := make(map[string]string)
@@ -469,17 +473,36 @@ func AutoMapperRelationshipCreate(obj tardellicomauv1alpha1.AutoMapperDefinition
 
 	cr := &tardellicomauv1alpha1.AutoMapperRelationship{}
 	cr.Spec = tardellicomauv1alpha1.AutoMapperRelationshipSpec{
-		Source:    obj.Source,
-		Result:    obj.Result,
-		Basis:     obj.Basis,
-		Label:     *obj.Label,
-		Namespace: *obj.Namespace,
-		VarMap:    obj.VarMap,
+		Source: obj.Source,
+		Result: obj.Result,
+		Basis:  obj.Basis,
+		VarMap: obj.VarMap,
 	}
+
+	// omitempty on these means may not be present
+	if obj.Label != nil {
+		cr.Spec.Label = *obj.Label
+	}
+
+	if obj.Namespace != nil {
+		cr.Spec.Namespace = *obj.Namespace
+	}
+
 	cr.Status = tardellicomauv1alpha1.AutoMapperRelationshipStatus{
 		Resources: []tardellicomauv1alpha1.AutoMapperRelationshipStatusMappings{},
 	}
+
+	// set namesapce of the relationship to the same as the definition or it throws error
+	// for setting ownership
+	cr.SetGenerateName("automapperrelationship-")
+	cr.SetNamespace(amd.GetNamespace())
+
 	if err := controllerutil.SetControllerReference(amd, cr, r.Scheme); err != nil {
+		return nil, err
+	}
+
+	// First create the resource in the cluster
+	if err := r.Create(ctx, cr); err != nil {
 		return nil, err
 	}
 
@@ -530,7 +553,7 @@ func AutoMapperRelationshipCreate(obj tardellicomauv1alpha1.AutoMapperDefinition
 
 	cr.Status.Resources = filteredList
 
-	if err := r.Create(ctx, cr); err != nil {
+	if err := r.Status().Update(ctx, cr); err != nil {
 		return nil, err
 	}
 

@@ -39,6 +39,10 @@ spec:
                 description: ENUM['cluster', 'label', 'namespace'] - Defines the basis
                   of the relationship, its either cluster wide, based on resource
                   labels or based on resource namespaces.
+                enum:
+                - cluster
+                - label
+                - namespace
                 type: string
               labels:
                 description: If the basis is equal to label, this map will have label
@@ -120,6 +124,9 @@ spec:
                       description: ENUM['static', 'referenced'] - Defines whether
                         the variable will be defined by the user or will reference
                         a resource attribute from the source
+                      enum:
+                      - static
+                      - referenced
                       type: string
                   required:
                   - destinationVar

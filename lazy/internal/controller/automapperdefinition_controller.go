@@ -18,6 +18,7 @@ package controller
 
 import (
 	"context"
+	"fmt"
 	"slices"
 	"time"
 
@@ -69,6 +70,12 @@ func (r *AutoMapperDefinitionReconciler) Reconcile(ctx context.Context, req ctrl
 		logger.Info("AutoMapperDefinition failed to be retrieved. Exiting...")
 		return ctrl.Result{RequeueAfter: time.Minute * 20}, err
 	}
+
+	// for debugging
+	logger.Info("DEBUG: Received AutoMapperDefinition",
+		"name", cr.Name,
+		"spec", fmt.Sprintf("%+v", cr.Spec),
+		"relationships_count", len(cr.Spec.Relationships))
 
 	// Ensures that finalizers are on the object and graceful deletion with finalizer
 	// consideration

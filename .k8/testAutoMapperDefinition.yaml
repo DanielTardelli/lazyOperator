@@ -1,0 +1,23 @@
+apiVersion: tardelli.com.au/v1alpha1
+kind: AutoMapperDefinition
+metadata:
+  name: automapperdefinition-test
+spec:
+  relationships:
+  - objectName: deployment-cm
+    source:
+      group: apps
+      version: v1
+      kind: Deployment
+    result:
+      group: ""
+      version: v1
+      kind: ConfigMap
+    basis: cluster
+    varMap:
+    - type: static
+      sourceVar: testing123
+      destinationVar: data.testProperty
+    - type: referenced
+      sourceVar: metadata.name
+      destinationVar: metadata.name

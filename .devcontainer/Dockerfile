@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     iptables \
     ca-certificates \
     software-properties-common \
+    socat \
     && rm -rf /var/lib/apt/lists/*
 
 # Install kubectl

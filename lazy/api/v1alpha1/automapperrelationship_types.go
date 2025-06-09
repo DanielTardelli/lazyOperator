@@ -28,6 +28,7 @@ import (
 type AutoMapperVariableMap struct {
 	// ENUM['static', 'referenced'] - Defines whether the variable will be defined
 	// by the user or will reference a resource attribute from the source
+	// +kubebuilder:validation:Enum=static;referenced
 	Type string `json:"type"`
 	// Either the static value or JSON path to the attribute in accordance to the above
 	SourceVar string `json:"sourceVar"`
@@ -45,6 +46,7 @@ type AutoMapperRelationshipSpec struct {
 	Result AutoMapperDefinitionGVK `json:"result"`
 	// ENUM['cluster', 'label', 'namespace'] - Defines the basis of the relationship, its
 	// either cluster wide, based on resource labels or based on resource namespaces.
+	// +kubebuilder:validation:Enum=cluster;label;namespace
 	Basis string `json:"basis"`
 	// If the basis is equal to label, this map will have label key value pair that is to be
 	// watched for this relationship
