@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/DanielTardelli/lazyOperator.git'
-    targetRevision: HEAD
+    targetRevision: master
     path: .k8/operator
   destination:
     server: 'https://kubernetes.default.svc'

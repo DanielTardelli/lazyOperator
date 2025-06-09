@@ -19,6 +19,7 @@ package controller
 import (
 	"context"
 	"errors"
+	"fmt"
 	"strings"
 
 	tardellicomauv1alpha1 "github.com/DanielTardelli/lazyOperator/api/v1alpha1"
@@ -226,7 +227,7 @@ func AutoMapperRelationshipResourceHandler(operation string, ctx context.Context
 
 		dst.SetLabels(safeMergeLabels(labels, dst.GetLabels()))
 
-		if err := controllerutil.SetControllerReference(rel, dst, r.Scheme); err != nil {
+		if err := controllerutil.SetOwnerReference(rel, dst, r.Scheme); err != nil {
 			return err
 		}
 
@@ -242,7 +243,7 @@ func AutoMapperRelationshipResourceHandler(operation string, ctx context.Context
 	return nil
 }
 
-func AutoMapperRelationshipClusterResourceDiscoverer(basis string, label tardellicomauv1alpha1.AutoMapperDefinitionLabel, namespace string, src, dst tardellicomauv1alpha1.AutoMapperDefinitionGVK, r *AutoMapperDefinitionReconciler, ctx context.Context) ([]AutoMapperTmpMap, error) {
+func AutoMapperRelationshipClusterResourceDiscoverer(basis string, label *tardellicomauv1alpha1.AutoMapperDefinitionLabel, namespace *string, src, dst tardellicomauv1alpha1.AutoMapperDefinitionGVK, r *AutoMapperDefinitionReconciler, ctx context.Context) ([]AutoMapperTmpMap, error) {
 	list := &unstructured.UnstructuredList{}
 	list.SetGroupVersionKind(schema.GroupVersionKind{
 		Group:   src.Group,
@@ -252,10 +253,16 @@ func AutoMapperRelationshipClusterResourceDiscoverer(basis string, label tardell
 
 	var opts client.ListOptions
 	if basis == "namespace" {
+		if namespace == nil {
+			return nil, fmt.Errorf("basis is namespace but no namespace specified")
+		}
 		opts = client.ListOptions{
-			Namespace: namespace,
+			Namespace: *namespace,
 		}
 	} else if basis == "label" {
+		if label == nil {
+			return nil, fmt.Errorf("basis is label but no labels specified")
+		}
 		opts = client.ListOptions{
 			LabelSelector: labels.SelectorFromSet(map[string]string{
 				label.Key: label.Value,
@@ -473,19 +480,12 @@ func AutoMapperRelationshipCreate(obj tardellicomauv1alpha1.AutoMapperDefinition
 
 	cr := &tardellicomauv1alpha1.AutoMapperRelationship{}
 	cr.Spec = tardellicomauv1alpha1.AutoMapperRelationshipSpec{
-		Source: obj.Source,
-		Result: obj.Result,
-		Basis:  obj.Basis,
-		VarMap: obj.VarMap,
-	}
-
-	// omitempty on these means may not be present
-	if obj.Label != nil {
-		cr.Spec.Label = *obj.Label
-	}
-
-	if obj.Namespace != nil {
-		cr.Spec.Namespace = *obj.Namespace
+		Source:    obj.Source,
+		Result:    obj.Result,
+		Basis:     obj.Basis,
+		VarMap:    obj.VarMap,
+		Label:     obj.Label,
+		Namespace: obj.Namespace,
 	}
 
 	cr.Status = tardellicomauv1alpha1.AutoMapperRelationshipStatus{
@@ -497,12 +497,18 @@ func AutoMapperRelationshipCreate(obj tardellicomauv1alpha1.AutoMapperDefinition
 	cr.SetGenerateName("automapperrelationship-")
 	cr.SetNamespace(amd.GetNamespace())
 
-	if err := controllerutil.SetControllerReference(amd, cr, r.Scheme); err != nil {
+	// First create the resource in the cluster so it gets uid
+	if err := r.Create(ctx, cr); err != nil {
 		return nil, err
 	}
 
-	// First create the resource in the cluster
-	if err := r.Create(ctx, cr); err != nil {
+	// then set reference
+	if err := controllerutil.SetOwnerReference(amd, cr, r.Scheme); err != nil {
+		return nil, err
+	}
+
+	// then update
+	if err := r.Update(ctx, cr); err != nil {
 		return nil, err
 	}
 
@@ -527,7 +533,7 @@ func AutoMapperRelationshipCreate(obj tardellicomauv1alpha1.AutoMapperDefinition
 				return nil, err
 			}
 
-			res, err := toStatusResource(obj.Source, obj.Result)
+			res, err := toStatusResource(obj.Source, newRsrc)
 			if err != nil {
 				return nil, err
 			}

@@ -50,10 +50,10 @@ type AutoMapperRelationshipSpec struct {
 	Basis string `json:"basis"`
 	// If the basis is equal to label, this map will have label key value pair that is to be
 	// watched for this relationship
-	Label AutoMapperDefinitionLabel `json:"labels"`
+	Label *AutoMapperDefinitionLabel `json:"labels,omitempty"`
 	// If the basis is equal to namespace, this slice will contain the namespace that is to
 	// be watched for this relationship
-	Namespace string `json:"namespace"`
+	Namespace *string `json:"namespace,omitempty"`
 	// The mappings of variables to the result resources both static and dynamic/referenced
 	VarMap *[]AutoMapperVariableMap `json:"varMap"`
 }

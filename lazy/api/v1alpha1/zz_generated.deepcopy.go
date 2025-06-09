@@ -270,7 +270,16 @@ func (in *AutoMapperRelationshipSpec) DeepCopyInto(out *AutoMapperRelationshipSp
 	*out = *in
 	out.Source = in.Source
 	out.Result = in.Result
-	out.Label = in.Label
+	if in.Label != nil {
+		in, out := &in.Label, &out.Label
+		*out = new(AutoMapperDefinitionLabel)
+		**out = **in
+	}
+	if in.Namespace != nil {
+		in, out := &in.Namespace, &out.Namespace
+		*out = new(string)
+		**out = **in
+	}
 	if in.VarMap != nil {
 		in, out := &in.VarMap, &out.VarMap
 		*out = new([]AutoMapperVariableMap)

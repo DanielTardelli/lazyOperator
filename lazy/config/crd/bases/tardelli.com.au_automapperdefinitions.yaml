@@ -51,7 +51,7 @@ spec:
                       - label
                       - namespace
                       type: string
-                    labelBasis:
+                    labels:
                       description: If the basis is equal to label, this map will have
                         the key value pair of the label that is to be watched for
                         this relationship
@@ -66,7 +66,7 @@ spec:
                       - key
                       - value
                       type: object
-                    namespaceBasis:
+                    namespace:
                       description: If the basis is equal to namespace, this slice
                         will contain the namespace that will be watched for this relationship
                       type: string

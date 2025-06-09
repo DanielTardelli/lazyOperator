@@ -136,8 +136,6 @@ spec:
                 type: array
             required:
             - basis
-            - labels
-            - namespace
             - result
             - source
             - varMap
