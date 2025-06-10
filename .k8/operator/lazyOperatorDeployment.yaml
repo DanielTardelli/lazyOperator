@@ -17,7 +17,6 @@ spec:
       containers:
       - name: lazy
         image: danieltardelli/lazy:0.0.1
-        imagePullPolicy: Never
         command:
           - /manager
 ---
