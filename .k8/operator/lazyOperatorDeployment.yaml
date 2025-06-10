@@ -16,7 +16,7 @@ spec:
       serviceAccountName: operator-sa
       containers:
       - name: lazy
-        image: lazy:latest
+        image: danieltardelli/lazy:0.0.1
         imagePullPolicy: Never
         command:
           - /manager
