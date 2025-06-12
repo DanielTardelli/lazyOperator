@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	apiv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -31,7 +32,7 @@ type AutoMapperVariableMap struct {
 	// +kubebuilder:validation:Enum=static;referenced
 	Type string `json:"type"`
 	// Either the static value or JSON path to the attribute in accordance to the above
-	SourceVar string `json:"sourceVar"`
+	SourceVar apiv1.JSON `json:"sourceVar"`
 	// The JSON path where the value will be deposited in the resultant resource
 	DestinationVar string `json:"destinationVar"`
 }

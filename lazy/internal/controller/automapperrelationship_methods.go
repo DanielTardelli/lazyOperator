@@ -18,11 +18,13 @@ package controller
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"strings"
 
 	tardellicomauv1alpha1 "github.com/DanielTardelli/lazyOperator/api/v1alpha1"
+	apiv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	errorsv1 "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/labels"
@@ -127,6 +129,20 @@ func AutoMapperRelationshipGetValue(obj *unstructured.Unstructured, path string)
 	return val, nil
 }
 
+// Marshals the JSON object
+func AutoMapperRelationshipToJSON(source interface{}) (apiv1.JSON, error) {
+	output, err := json.Marshal(source)
+	if err != nil {
+		return apiv1.JSON{}, err
+	}
+	return apiv1.JSON{Raw: output}, nil
+}
+
+// Unmarshals the JSON object
+func AutoMapperRelationshipFromJSON(data apiv1.JSON, target interface{}) error {
+	return json.Unmarshal(data.Raw, target)
+}
+
 // Sets values in unstructured objects
 func AutoMapperRelationshipSetValue(obj *unstructured.Unstructured, variable interface{}, path string) error {
 	parts := strings.Split(path, ".")
@@ -198,13 +214,22 @@ func AutoMapperRelationshipResourceHandler(operation string, ctx context.Context
 	for _, mapping := range varmaps {
 		if mapping.Type == "static" {
 			// if static sourceVar is the value
-			val := mapping.SourceVar
+			val, err := AutoMapperRelationshipToJSON(mapping.SourceVar)
+			if err != nil {
+				return err
+			}
+
 			if err := AutoMapperRelationshipSetValue(dst, val, mapping.DestinationVar); err != nil {
 				return err
 			}
 		} else if mapping.Type == "referenced" {
 			// if referenced sourceVar is path
-			val, err := AutoMapperRelationshipGetValue(src, mapping.SourceVar)
+			path, err := AutoMapperRelationshipToJSON(mapping.SourceVar)
+			if err != nil {
+				return err
+			}
+
+			val, err := AutoMapperRelationshipGetValue(src, string(path.Raw))
 			if err != nil {
 				return err
 			} else {

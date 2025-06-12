@@ -119,7 +119,7 @@ spec:
                     sourceVar:
                       description: Either the static value or JSON path to the attribute
                         in accordance to the above
-                      type: string
+                      x-kubernetes-preserve-unknown-fields: true
                     type:
                       description: ENUM['static', 'referenced'] - Defines whether
                         the variable will be defined by the user or will reference
